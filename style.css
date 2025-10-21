@@ -1,11 +1,9 @@
 @import url(font/font.css);
 
 :root {
-    /* Light color */
     --white-color: #E8E8E8;
     --gray-lightcolor: #C7C7C7;
     --gray-color: #A9A9A9;
-    /* Dark color */
     --black-color: #0E0E0E;
     --gray-mediumcolor: #656565;
     --gray-darkcolor: #393939;
@@ -29,7 +27,6 @@ html, body {
     margin: 0 auto;
 }
 
-/* ===== Main ===== */
 .main {
     background: 
         linear-gradient(
@@ -89,7 +86,6 @@ html, body {
     font-family: 'Helvetica Neue Light';
 }
 
-/* ===== Divider ===== */
 .divider{
     padding: 142px 0;
     background-color: var(--black-color);
@@ -112,7 +108,6 @@ html, body {
     align-items: end;
 }
 
-/* ===== Projects ===== */
 .projects{
     padding: 218px 0 253px;
 }
@@ -142,6 +137,9 @@ html, body {
     justify-content: space-between;
     align-items: end;
 }
+.projects-item:hover{
+    background-size: 110%;
+}
 .img-gradient {
     position: absolute;
     top: 0;
@@ -169,14 +167,12 @@ html, body {
     z-index: 2;
 }
 
-/* ===== Divider Logo ===== */
 .dividerlogo{
     width: 1182px;
     margin: 0 auto;
     padding-bottom: 302.78px;
 }
 
-/* ===== Products ===== */
 .products{
     padding: 0 0 257px;
 }
@@ -254,7 +250,6 @@ html, body {
     color: var(--gray-darkcolor);
 }
 
-/* ===== Order ===== */
 .order{
     padding: 0 0 67px;
 }
@@ -322,7 +317,6 @@ input:focus{
     color: var(--white-color);
 }
 
-/* ===== Info ===== */
 .info{
     background-color: var(--black-color);
     padding: 122px 0 104px;
@@ -366,7 +360,6 @@ input:focus{
     color: #939393;
 }
 
-/* ===== Advantages ===== */
 .advantages{
     padding: 267px 0 317px;
 }
@@ -453,7 +446,6 @@ input:focus{
     text-transform: uppercase;
 }
 
-/* ===== Instagram ===== */
 .instagram{
     padding-bottom: 302px;
 }
@@ -484,7 +476,6 @@ input:focus{
     right: 16px;
 }
 
-/* ===== Description ===== */
 .description{
     padding-bottom: 89px;
 }
@@ -512,9 +503,14 @@ input:focus{
     font-size: 18px;
     line-height: 22px;
     letter-spacing: 0%;
+    position: relative;
 }
 
-/* ===== Footer ===== */
+.sliderText{
+    max-height: 110px;
+    overflow-y: hidden;
+}
+
 .footer{
     background-color: var(--black-color);
     padding: 72px 0 57px;
@@ -593,7 +589,6 @@ input:focus{
     gap: 23px;
 }
 
-/* ===== Burger Menu ===== */
 .burger {
     display: none;
     position: fixed;
@@ -764,13 +759,225 @@ input:focus{
     transition: opacity 0.3s ease;
 }
 
-/* ===== Media Queries ===== */
+.riseUp {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.riseUp.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero .riseUp,
+.products .riseUp,
+.info .riseUp {
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.titleAnim {
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.titleAnim:hover {
+    transform: translateX(6px);
+}
+
+.titleAnim:hover img {
+    transform: translate(6px, -6px);
+}
+
+.titleAnim img {
+    transition: transform 0.3s ease;
+}
+
+.slider {
+    cursor: grab;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    overflow-y: hidden;
+    display: flex;
+    padding: 10px 0;
+}
+
+.slider.active {
+    cursor: grabbing;
+}
+
+.slider::-webkit-scrollbar {
+    display: none;
+}
+
+.slider {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.projects-slider,
+.products-slider,
+.instagram-slider {
+    width: 100%;
+}
+
+.projects-item {
+    position: relative;
+    padding: 356px 35px 27px 27px;
+    width: 688px;
+    height: 443px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    flex-shrink: 0;
+}
+
+.products-item {
+    width: 572px;
+    min-width: 572px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.instagram-item {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.instagram-item img:first-child {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+}
+
+.img-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.4) 0%,
+            rgba(0, 0, 0, 0.4) 100%
+        );
+    z-index: 1;
+}
+
+.projects-item, .products-item, .instagram-item {
+    transition: transform 0.3s ease, background-size 0.3s ease;
+}
+
+.projects-item:hover {
+    background-size: 110%;
+    transform: scale(1.02);
+}
+
+.products-item:hover .item-img div {
+    opacity: 0.1;
+}
+
+.products-item:hover .item-name h3 {
+    color: var(--black-color);
+}
+
+/* ===== TEXT SLIDER STYLES ===== */
+.sliderText {
+    max-height: 110px;
+    overflow-y: auto;
+    position: relative;
+    padding-right: 15px;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.sliderText::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+}
+
+.sliderText-container {
+    position: relative;
+    width: 100%;
+}
+
+.sliderText-scrollbar {
+    position: absolute;
+    right: 3px;
+    top: 2px;
+    width: 6px;
+    height: calc(100% - 4px);
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.sliderText-thumb {
+    position: absolute;
+    right: 0;
+    width: 6px;
+    background: var(--gray-mediumcolor);
+    border-radius: 3px;
+    cursor: grab;
+    transition: background-color 0.3s ease;
+    pointer-events: auto;
+}
+
+.sliderText-thumb:hover {
+    background: var(--gray-darkcolor);
+}
+
+.sliderText-thumb.active {
+    cursor: grabbing;
+    background: var(--black-color);
+}
+
+.sliderText:hover .sliderText-scrollbar,
+.sliderText.scrolling .sliderText-scrollbar {
+    opacity: 1;
+}
+
+/* Индикатор что текст можно скроллить */
+.sliderText:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 15px;
+    height: 20px;
+    background: linear-gradient(transparent, rgba(136, 136, 136, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.sliderText.scrollable:after {
+    opacity: 1;
+}
+
+/* Скрываем нативный скроллбар но оставляем функциональность */
+.sliderText {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.sliderText::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
 @media (max-width: 768px) {
     .container{
         width: 75.78125%;
     }
 
-    /* Header & Hero */
     .header{
         padding: 55.28px 0;
     }
@@ -795,7 +1002,6 @@ input:focus{
         padding: 21.04px 0 71.02px;
     }
 
-    /* Divider */
     .divider{
         padding: 97px 0;
     }
@@ -808,7 +1014,6 @@ input:focus{
         max-width: 583px;
     }
 
-    /* Projects */
     .projects{
         padding: 167px 0 239px;
     }
@@ -829,7 +1034,6 @@ input:focus{
         max-width: 504px;
     }
 
-    /* Logo Divider */
     .dividerlogo{
         width: 583px;
         padding-bottom: 239px;
@@ -838,7 +1042,6 @@ input:focus{
         width: 583px;
     }
 
-    /* Products */
     .products{
         padding: 0 0 239px;
     }
@@ -875,7 +1078,6 @@ input:focus{
         width: 12px;
     }
 
-    /* Order */
     .order{
         padding: 0 0 239px;
     }
@@ -900,7 +1102,6 @@ input:focus{
         padding-bottom: 9px;
     }
 
-    /* Info */
     .info{
         padding: 122px 0 124px;
     }
@@ -908,7 +1109,6 @@ input:focus{
         width: 150vmax;
     }
 
-    /* Advantages */
     .advantages{
         padding: 239px 0;
     }
@@ -943,7 +1143,6 @@ input:focus{
         font-size: 16px;
     }
 
-    /* Instagram */
     .instagram{
         padding-bottom: 239px;
     }
@@ -954,7 +1153,6 @@ input:focus{
         width: 389px;
     }
 
-    /* Description */
     .description .container{
         flex-direction: column;
         gap: 63px;
@@ -964,7 +1162,6 @@ input:focus{
         font-size: 16px;
     }
 
-    /* Burger Menu */
     .menu-top {
         flex-direction: column;
     }
@@ -984,7 +1181,6 @@ input:focus{
         width: 86.5625%;
     }
 
-    /* Header & Hero */
     .main {
         background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.75) 100%), url(assets/main-background.png) no-repeat;
         background-size: 150vmax;
@@ -1030,7 +1226,6 @@ input:focus{
         padding: 10px 0 29px;
     }
 
-    /* Divider */
     .divider {
         padding: 55px 0;
     }
@@ -1054,7 +1249,6 @@ input:focus{
         max-width: 212px;
     }
 
-    /* Projects */
     .projects {
         padding: 115px 0 139px;
     }
@@ -1104,7 +1298,6 @@ input:focus{
         margin-right: 15px;
     }
 
-    /* Divider Logo */
     .dividerlogo {
         width: 276px;
         height: 257px;
@@ -1114,7 +1307,6 @@ input:focus{
         width: 276px;
     }
 
-    /* Products */
     .products {
         padding: 0 0 139px;
     }
@@ -1164,7 +1356,6 @@ input:focus{
         line-height: 13px;
     }
 
-    /* Order */
     .order {
         padding: 0 0 139px;
     }
@@ -1198,9 +1389,12 @@ input:focus{
         font-size: 12px;
     }
 
-    /* Info */
     .info {
         padding: 80px 0;
+    }
+
+    .info .container img, h2{
+        display: none;
     }
     .info h2 {
         font-size: 18px;
@@ -1212,10 +1406,13 @@ input:focus{
         width: 100%;
     }
     .info-item {
+        display: flex;
+        
         max-width: 100%;
     }
     .info-item img {
         width: 40px;
+        height: 95px;
     }
     .info-item h3 {
         font-size: 12px;
@@ -1225,16 +1422,22 @@ input:focus{
         font-size: 12px;
     }
 
-    /* Advantages */
     .advantages {
         padding: 139px 0;
     }
     .basic-logo {
-        flex-direction: column;
+        display: flex;
+        flex-direction: row;
         gap: 25px;
     }
+    .basic-logo img{
+        width: 41px;
+        height: 40px;
+    }
     .basic-logo h2 {
-        font-size: 16px;
+        display: block;
+        font-size: 12px;
+        line-height: 15px;
         width: 100%;
     }
     .basic-plus {
@@ -1260,6 +1463,7 @@ input:focus{
         line-height: 16px;
     }
     .advantages-link {
+        display: none;
         gap: 15px;
     }
     .advantages-link img {
@@ -1269,7 +1473,6 @@ input:focus{
         font-size: 12px;
     }
 
-    /* Instagram */
     .instagram {
         padding-bottom: 139px;
     }
@@ -1293,7 +1496,6 @@ input:focus{
         right: 10px;
     }
 
-    /* Description */
     .description {
         padding-bottom: 60px;
     }
@@ -1309,7 +1511,6 @@ input:focus{
         line-height: 16px;
     }
 
-    /* Footer */
     .footer {
         padding: 40px 0 30px;
     }
@@ -1360,7 +1561,6 @@ input:focus{
         width: 15px;
     }
 
-    /* Burger Menu */
     .burger {
         width: 100%;
         padding: 40px 0;
@@ -1409,6 +1609,9 @@ input:focus{
     }
     .salons-column p,
     .contact p {
-        font-size: 11px;
+        font-size: 10px;
+    }
+    .contact {
+        width: 100%;
     }
 }
