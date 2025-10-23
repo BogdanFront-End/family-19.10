@@ -309,15 +309,14 @@ function enhanceSliderItems() {
     
     sliderItems.forEach(item => {
         item.style.cursor = 'pointer';
-        item.style.transition = 'all 0.3s ease';
+        // Remove any transform transitions that might interfere with zoom
+        item.style.transition = 'none';
         
-        item.addEventListener('mouseenter', () => {
-            item.style.transform = 'translateY(-5px)';
-        });
-        
-        item.addEventListener('mouseleave', () => {
-            item.style.transform = 'translateY(0)';
-        });
+        // For products items, ensure the image container doesn't have transform
+        const itemImg = item.querySelector('.item-img');
+        if (itemImg) {
+            itemImg.style.transition = 'none';
+        }
         
         item.addEventListener('click', (e) => {
             if (e.target.tagName === 'IMG' || e.target.tagName === 'A') {
@@ -327,6 +326,7 @@ function enhanceSliderItems() {
         });
     });
     
+    // Rest of the function remains the same...
     const sliderArrows = document.querySelectorAll('.projects-item img[src*="arrow"], .item-name img');
     sliderArrows.forEach(arrow => {
         arrow.addEventListener('click', function(e) {
