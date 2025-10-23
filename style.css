@@ -166,6 +166,26 @@ html {
     object-position: center;
 }
 
+.vimeo-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.vimeo-container iframe {
+    width: 100vw;
+    height: 56.25vw; /* 16:9 ratio */
+    min-height: 100vh;
+    min-width: 177.77vh; /* 16:9 ratio */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .video-overlay {
     position: absolute;
     top: 0;
@@ -1358,6 +1378,10 @@ input:focus {
 
 /* ===== TABLET STYLES (max-width: 768px) ===== */
 @media (max-width: 768px) {
+    .video-background video {
+        object-position: center 30%; /* Настройте по необходимости */
+    }
+
     .container {
         width: 75.78125%;
     }
@@ -1382,6 +1406,7 @@ input:focus {
 
     .hero {
         margin-top: 534.1px;
+        bottom: 71px;
     }
 
     .hero p {
@@ -1788,13 +1813,9 @@ input:focus {
     .container {
         width: 86.5625%;
     }
-
-    .main {
-        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.75) 100%), url(assets/main-background.png) no-repeat;
-        background-size: 150vmax;
-        background-position: -435px;
+    .main{
+        height: 490px;
     }
-
     .header {
         padding: 32px 0;
     }
@@ -1802,6 +1823,10 @@ input:focus {
     .header-icon a img {
         width: 81px;
         height: 10px;
+    }
+
+    .hero{
+        bottom: 29px;
     }
 
     .projects-link {
@@ -2071,14 +2096,18 @@ input:focus {
     }
 
     .basic-logo {
-        flex-direction: column;
-        gap: 25px;
+        flex-direction: row;
+        gap: 39px;
+    }
+    
+    .basic-logo img{
+        width: 41px;
+        height: 41px;
     }
 
     .basic-logo h2 {
         font-size: 12px;
         line-height: 15px;
-        width: 183px;
     }
 
     .basic-plus {
